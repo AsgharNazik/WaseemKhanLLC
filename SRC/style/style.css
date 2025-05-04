@@ -1046,7 +1046,6 @@ header.scrolled {
 
 .education-main .education-section {
 	width: fit-content;
-	min-width: 770px;
 	max-width: 800px;
 	display: flex;
 	flex-direction: column;
@@ -1058,11 +1057,9 @@ header.scrolled {
 }
 
 .education-main .education-section .study {
-	/* height: 190px; */
 	display: flex;
 	flex-direction: row;
-	/* margin-bottom: 50px; */
-	/* justify-content: space-between; */
+	align-items: center;
 }
 
 .education-main .education-section .study .image {
@@ -1073,26 +1070,25 @@ header.scrolled {
 
 .education-main .education-section .study .image img {
 	width: 100%;
-	max-width: 350px;    /* ✅ image ki max width fix */
-	height: auto;        /* ✅ natural aspect ratio */
+	max-width: 350px;
+	height: auto;
 	border-radius: 10px;
 	border: 2px solid var(--main-color);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: pro look */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .education-main .education-section .study .line {
 	min-width: 2.5px;
 	height: 180px;
-	margin-top: auto;
-	margin-bottom: auto;
+	margin: 0 20px;
 	border-radius: 10px;
-	margin-left: 20px;
-	margin-right: 20px;
 	background-color: var(--main-color);
 }
-.texts{
-		position: relative;
-		top: 120px; /* ya jitna neeche chahiye */	
+
+.education-main .education-section .study .texts {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .education-main .education-section .study.second .image {
@@ -1105,74 +1101,13 @@ header.scrolled {
 
 .education-main .education-section .study.second .texts {
 	order: 0;
-	margin-top: -25px;
 }
 
-@media (max-width: 850px) {
-	.education-main .education-section .study {
-		flex-direction: column;
-		border: 2px solid #ccc;
-		border-radius: 20px;
-		padding: 10px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-		background: rgba(255, 255, 255, 0.1);
-		backdrop-filter: blur(4px);
-	}
-
-	.education-main .education-section {
-		min-width: 250px;
-		width: 85%;
-	}
-
-	.education-main .education-section .study .image img {
-		width: 85%;
-		min-width: 250px;
-	}
-
-	.education-main .education-section .study .line {
-		width: 100%;
-		height: 4px;
-		margin: 0px;
-		margin-top: 20px;
-		margin-bottom: 5px;
-	}
-
-	.education-main .education-section .study .texts {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.education-main .education-section .study.second .image {
-		order: 2;
-	}
-
-	.education-main .education-section .study.second .line {
-		order: 3;
-	}
-
-	.education-main .education-section .study.second .texts {
-		order: 4;
-	}
-
-	.education-main .education-section .study .texts .header {
-		text-align: center;
-	}
-
-	.education-main .education-section .study .texts .name {
-		text-align: center;
-	}
-
-	.education-main .education-section .study .texts .year {
-		text-align: center;
-	}
-
-	.education-main .education-section .study .texts .text {
-		text-align: center;
-	}
+.education-main .education-section .study.third .texts {
+	/* Removed unnecessary margin or positioning */
 }
 
+/* Text Styles */
 .education-main .education-section .study .texts .header {
 	font-size: 1.4rem;
 	font-weight: 600;
@@ -1194,18 +1129,67 @@ header.scrolled {
 .education-main .education-section .study .texts .text {
 	font-weight: 500;
 	color: var(--text-color);
-	/* text-align: justify; */
 	margin-top: 10px;
 }
-.education-main .education-section .study.third .texts {
-	/* Option 1: Using Margin */
-	margin-top: 40px;   /* Adjust this value */
 
-	/* Option 2: Using Position */
-	/* position: relative; */
-	/* top: 30px; */
+
+/* ✅ Mobile View Fix */
+@media (max-width: 850px) {
+	.education-main {
+		flex-direction: column;
+		align-items: center;
+		padding-top: 100px;
+	}
+
+	.education-main .education-section {
+		width: 95%;
+		padding: 0;
+		min-width: unset;
+	}
+
+	.education-main .education-section .study {
+		flex-direction: column;
+		align-items: center;
+		border: 2px solid #ccc;
+		border-radius: 20px;
+		padding: 15px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(4px);
+		margin-bottom: 30px;
+	}
+
+	.education-main .education-section .study .image img {
+		width: 100%;
+		max-width: 350px;
+		min-width: 250px;
+		height: auto;
+	}
+
+	.education-main .education-section .study .line {
+		display: none; /* Hide line on mobile */
+	}
+
+	.education-main .education-section .study .texts {
+		position: static;
+		margin-top: 15px;
+		text-align: center;
+		align-items: center;
+	}
+
+	.education-main .education-section .study.second .image,
+	.education-main .education-section .study.second .line,
+	.education-main .education-section .study.second .texts {
+		order: unset; /* reset order for clean stacking */
+	}
+
+	.education-main .education-section .study .texts .header,
+	.education-main .education-section .study .texts .name,
+	.education-main .education-section .study .texts .year,
+	.education-main .education-section .study .texts .text {
+		text-align: center;
+	}
 }
-
 
 .gallery-main {
 	margin-top: 150px;
@@ -1299,7 +1283,6 @@ header.scrolled {
 
 .career-main {
 	width: 100%;
-	/* margin-top: 150px; */
 	padding-top: 150px;
 	display: flex;
 	justify-content: center;
@@ -1307,10 +1290,7 @@ header.scrolled {
 }
 
 .career-main .career-section {
-	/* width: 70%; */
-	/* min-width: 650px; */
 	max-width: 1000px;
-	/* padding: 100px; */
 	padding: 0px 20px;
 }
 
@@ -1332,7 +1312,6 @@ header.scrolled {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	background: rgba(255, 255, 255, 0.1);
 	backdrop-filter: blur(4px);
-	/* color: var(--main-color); */
 }
 
 .career-main .career-section .header-line {
@@ -1340,18 +1319,17 @@ header.scrolled {
 	height: 4px;
 	background-color: var(--main-color);
 	border-radius: 20px;
-	/* margin-top: 5px; */
 }
 
 .career-main .career-section .professional-summary .texts {
-	margin-top: -70px;
+	margin-top: 10px; /* ✅ Updated from -70px */
 	font-size: 1.05rem;
 	font-weight: 500;
 	text-align: justify;
 }
 
 .career-main .career-section .career-goals {
-	margin-top:200px;
+	margin-top: 200px;
 }
 
 .career-main .career-section .career-goals .goals {
@@ -1373,6 +1351,7 @@ header.scrolled {
 	flex-direction: column;
 	align-items: center;
 }
+
 .career-main .career-section .career-goals .goals-row .goals-header {
 	width: fit-content;
 	display: flex;
@@ -1392,11 +1371,10 @@ header.scrolled {
 	font-weight: 600;
 	margin-left: 10px;
 	margin-right: 10px;
-	/* color: var(--main-color); */
 }
 
 .career-main .career-section .career-goals .goals-row .texts {
-	margin-top: -30px;
+	margin-top: 0px;
 	display: flex;
 	flex-direction: column;
 	row-gap: 10px;
@@ -1417,7 +1395,6 @@ header.scrolled {
 	backdrop-filter: blur(4px);
 	display: flex;
 	align-items: center;
-	/* justify-content: center; */
 }
 
 .career-main .career-section .career-goals .goals-row .text-row .tr-icon {
@@ -1427,7 +1404,6 @@ header.scrolled {
 	border-radius: 50%;
 	background-color: var(--text-color);
 }
-
 
 .hobbies-main {
 	width: 100%;
@@ -1735,6 +1711,7 @@ header.scrolled {
 
 .page {
 	height: 100vh;
+	padding-bottom: 120px; /* Footer ke liye jagah */
 	/* min-height: 100%; */
 	display: flex;
 	flex-direction: column;
@@ -1743,11 +1720,10 @@ header.scrolled {
 }
 
 .footer {
-	position: fixed;
+	position: relative; /* fixed se relative kiya */
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	/* min-height: 50px; */
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -1759,6 +1735,7 @@ header.scrolled {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	background: rgba(255, 255, 255, 0.1);
 	backdrop-filter: blur(4px);
+	z-index: 10;
 }
 
 .footer .left {
@@ -1806,5 +1783,7 @@ header.scrolled {
 	.footer {
 		flex-direction: column;
 		row-gap: 10px;
+		text-align: center;
 	}
 }
+
